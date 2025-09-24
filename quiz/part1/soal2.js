@@ -27,7 +27,7 @@ let vocalWord = [
     "A", "I", "U", "E", "O",
 ];
 
-  str = str.split("");
+  str = str.slice().split("");
 
   for (let j = 0; j < str.length; j++) {
     for (let i = 0; i < vocalWord.length; i++) {
@@ -36,33 +36,43 @@ let vocalWord = [
       };
     }
   }
-
-  console.log({str});
   return str;
 }
 
 function reverseWord(str = []) {
   //code di sini
-  console.log({str_reverse: str.reverse()});
-  return str.reverse();
+  const newStr = str.slice().reverse();
+  return newStr;
 }
 
-function setLowerUpperCase(str) {
+function setLowerUpperCase(str = []) {
   //code di sini
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === str[i].toLowerCase()) str[i] = str[i].toUpperCase();
+    else if (str[i] === str[i].toUpperCase()) str[i] = str[i].toLowerCase();
+  }
+  return str;
 }
 
-function removeSpaces(str) {
+function removeSpaces(str = []) {
   //code di sini
+  const newStr = str.slice().filter(value => value !== " ").join("");
+  return newStr;
 }
 
-function passwordGenerator(name) {
+function passwordGenerator(name = "") {
   //code di sini
+  if (name.length < 5) return "Minimal karakter yang diinputkan adalah 5 karakter";
+  
   let changedVocal = changeVocals(name);
   let reversedWord = reverseWord(changedVocal);
-  let setUpToLower = setLowerUpperCase(reversedWord);
+  let switchedUpLowerCase = setLowerUpperCase(reversedWord);
+  let removedSpace = removeSpaces(switchedUpLowerCase);
+
+  return removedSpace;
 }
 
-console.log(passwordGenerator("Sergei Dragunov")); // 'VPNVGBRdJFGRFs'
-// console.log(passwordGenerator("Dimitri Wahyudiputra")); // 'BRTVPJDVYHBwJRTJMJd'
-// console.log(passwordGenerator("Alexei")); // 'JFXFLb'
-// console.log(passwordGenerator("Alex")); // 'Minimal karakter yang diinputkan adalah 5 karakter'
+console.log(passwordGenerator("Sergei Dragunov")); // 'VPNVGBRdJFGRFs' VPNVGBRdJFGRFs
+console.log(passwordGenerator("Dimitri Wahyudiputra")); // 'BRTVPJDVYHBwJRTJMJd' BRTVPJDVYHBwJRTJMJd
+console.log(passwordGenerator("Alexei")); // 'JFXFLb' JFXFLb
+console.log(passwordGenerator("Alex")); // 'Minimal karakter yang diinputkan adalah 5 karakter'
