@@ -8,6 +8,12 @@ Contoh:
 
 function totalDigitRekursif(angka) {
   // you can only write your code here!
+  if (!angka) return 0;
+
+  angka = `${angka}`.split("");
+  angka_depan = +angka[0];
+  angka.shift();
+  return angka_depan + totalDigitRekursif(+`${angka.join("")}`);
 }
 
 // TEST CASES

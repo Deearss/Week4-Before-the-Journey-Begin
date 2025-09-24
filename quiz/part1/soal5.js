@@ -8,6 +8,11 @@ Contoh:
 
 function kaliTerusRekursif(angka) {
   // you can only write your code here!
+  if (`${angka}`.length <= 1) return angka;
+
+  angka = `${angka}`.split("");
+  angka = angka.reduce((a, b) => a * b, 1);
+  return kaliTerusRekursif(angka);
 }
 
 // TEST CASES

@@ -72,7 +72,7 @@ function passwordGenerator(name = "") {
   return removedSpace;
 }
 
-console.log(passwordGenerator("Sergei Dragunov")); // 'VPNVGBRdJFGRFs' VPNVGBRdJFGRFs
-console.log(passwordGenerator("Dimitri Wahyudiputra")); // 'BRTVPJDVYHBwJRTJMJd' BRTVPJDVYHBwJRTJMJd
-console.log(passwordGenerator("Alexei")); // 'JFXFLb' JFXFLb
+console.log(passwordGenerator("Sergei Dragunov")); // 'VPNVGBRdJFGRFs'
+console.log(passwordGenerator("Dimitri Wahyudiputra")); // 'BRTVPJDVYHBwJRTJMJd'
+console.log(passwordGenerator("Alexei")); // 'JFXFLb'
 console.log(passwordGenerator("Alex")); // 'Minimal karakter yang diinputkan adalah 5 karakter'
