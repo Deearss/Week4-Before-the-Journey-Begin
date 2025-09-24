@@ -11,12 +11,40 @@ Gunakan function setLowerUpperCase untuk mengganti huruf besar menjadi kecil dan
 
 Gunakan function removeSpaces untuk menghilangkan semua spasi di dalam string yang sudah kita manipulasi
 */
-function changeVocals(str) {
+function changeVocals(str = "") {
   //code di sini
+  let abjad = [
+  "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+  "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+  "u", "v", "w", "x", "y", "z", 
+  "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+  "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
+  "U", "V", "W", "X", "Y", "Z"
+];
+  
+let vocalWord = [
+    "a", "i", "u", "e", "o",
+    "A", "I", "U", "E", "O",
+];
+
+  str = str.split("");
+
+  for (let j = 0; j < str.length; j++) {
+    for (let i = 0; i < vocalWord.length; i++) {
+      if (str[j] === vocalWord[i]) {
+        str[j] = abjad[abjad.indexOf(vocalWord[i]) + 1];
+      };
+    }
+  }
+
+  console.log({str});
+  return str;
 }
 
-function reverseWord(str) {
+function reverseWord(str = []) {
   //code di sini
+  console.log({str_reverse: str.reverse()});
+  return str.reverse();
 }
 
 function setLowerUpperCase(str) {
@@ -29,9 +57,12 @@ function removeSpaces(str) {
 
 function passwordGenerator(name) {
   //code di sini
+  let changedVocal = changeVocals(name);
+  let reversedWord = reverseWord(changedVocal);
+  let setUpToLower = setLowerUpperCase(reversedWord);
 }
 
 console.log(passwordGenerator("Sergei Dragunov")); // 'VPNVGBRdJFGRFs'
-console.log(passwordGenerator("Dimitri Wahyudiputra")); // 'BRTVPJDVYHBwJRTJMJd'
-console.log(passwordGenerator("Alexei")); // 'JFXFLb'
-console.log(passwordGenerator("Alex")); // 'Minimal karakter yang diinputkan adalah 5 karakter'
+// console.log(passwordGenerator("Dimitri Wahyudiputra")); // 'BRTVPJDVYHBwJRTJMJd'
+// console.log(passwordGenerator("Alexei")); // 'JFXFLb'
+// console.log(passwordGenerator("Alex")); // 'Minimal karakter yang diinputkan adalah 5 karakter'
