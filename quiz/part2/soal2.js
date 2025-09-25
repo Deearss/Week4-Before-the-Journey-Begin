@@ -12,8 +12,22 @@ function meleeRangedGrouping (str) {
   //your code here
   // Aku suka Dota 😍😍😍
   if (str === "") return [];
+  let result = [];
 
+  const tipeHero = {Ranged: [], Melee: []};
+
+  const newStr = str.split(",").map(value => value.split("-"));
   
+  for (const element of newStr) {
+      tipeHero[element[1]] = [...tipeHero[element[1]], element[0]];
+  }
+
+  for (const key in tipeHero) {
+    const element = tipeHero[key];
+    result.push(element);
+  }
+  
+  return result;
 }
 
 // TEST CASE
